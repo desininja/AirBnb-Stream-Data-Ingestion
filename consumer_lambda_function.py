@@ -7,7 +7,8 @@ def lambda_handler(event, context):
     target_bucket_name = 'airbnb-booking-records-target'
     
     if event:
-        file_key = f"{event.get("bookingId")}" + ".json"
+        print(event)
+        file_key =  event.get("bookingId") + ".json"
         s3_client.put_object(Bucket = target_bucket_name, Key=file_key,Body = json.dumps(event))
         
         return {

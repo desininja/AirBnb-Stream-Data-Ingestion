@@ -10,13 +10,17 @@ phases:
       - echo "Zipping deployment package......"
       - zip producer_deployment_package.zip producer_lambda_function.py
       - zip enrichment_deployment_package.zip enrichment_lambda_function.py
+      - zip consumer_deployment_package.zip consumer_lambda_function.py
   post_build:
     commands:
       - echo "Uploading to S3...."
       - aws s3 cp producer_deployment_package.zip s3://lambda-builds-zips/
       - aws s3 cp enrichment_deployment_package.zip s3://lambda-builds-zips/
+      - aws s3 cp consumer_deployment_package.zip s3://lambda-builds-zips/
       - echo "Updating Producer Lambda function via S3......"
       - aws lambda update-function-code --function-name ProduceAirbnbBookingData --s3-bucket lambda-builds-zips --s3-key producer_deployment_package.zip
       - echo "Updating Enrichment Lambda Function via s3.........."
       - aws lambda update-function-code --function-name Enrichment --s3-bucket lambda-builds-zips --s3-key enrichment_deployment_package.zip
+      - echo "Updating Consumer Lambda function via S3......"
+      - aws lambda update-function-code --function-name ProcessFilteredBookings --s3-bucket lambda-builds-zips --s3-key consumer_deployment_package.zip
       - echo "Deployment Complete!"

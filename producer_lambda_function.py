@@ -8,7 +8,7 @@ QUEUE_URL = "https://sqs.us-east-1.amazonaws.com/767398036887/AirbnbBookingQueue
 
 def generate_booking_data():
 
-
+    booking_id = str(uuid.uuid4())
     states = [ "Alaska", "Arizona", "California" "Texas", "Utah", "Vermont", "Virginia", "Washington",
                "West Virginia", "Wisconsin", "Wyoming","New Delhi"]
     countries = ["Afghanistan", "Albania","Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania",
@@ -20,7 +20,7 @@ def generate_booking_data():
     start_date = datetime.now() + timedelta(days=random.randint(0, 365))  
     end_date = start_date + timedelta(days=random.randint(1, 30))
     return {
-"bookingId": uuid.uuid4(),
+"bookingId": booking_id,
 "userId": "User"+f"{random.randint(1,100)}", 
 "propertyId": "Property"+f"{random.randint(1,300)}", 
 "location": f"{random.choice(states)}, {random.choice(countries)}", 

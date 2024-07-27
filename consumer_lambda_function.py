@@ -4,7 +4,7 @@ import boto3
 s3_client = boto3.client('s3')
 
 def lambda_handler(event, context):
-    target_bucket_name = 'airbnb-booking-records-target'
+    target_bucket_name = 'air-bnb-processed-entries'
     event_data = json.loads(event[0])
     if event:
         print(event_data)

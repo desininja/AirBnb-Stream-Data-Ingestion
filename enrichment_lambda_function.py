@@ -1,5 +1,6 @@
 import json
 from datetime import datetime
+
 def lambda_handler(event, context):
     print("Printing event as it is: \n", event)
     print("Added 0 index")

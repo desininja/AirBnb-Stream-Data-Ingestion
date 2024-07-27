@@ -3,8 +3,10 @@ import boto3
 import random
 import uuid
 from datetime import datetime, timedelta
+
 sqs_client = boto3.client("sqs")
-QUEUE_URL = "https://sqs.us-east-1.amazonaws.com/767398036887/AirbnbBookingQueue"
+
+QUEUE_URL = "https://sqs.us-east-1.amazonaws.com/025066280149/AirBnb-Booking-queue"
 
 def generate_booking_data():
 
@@ -21,12 +23,12 @@ def generate_booking_data():
     end_date = start_date + timedelta(days=random.randint(1, 30))
     return {
 "bookingId": booking_id,
-"userId": "User"+f"{random.randint(1,100)}", 
+"userId": "User"+f"{random.randint(1,1000)}", 
 "propertyId": "Property"+f"{random.randint(1,300)}", 
 "location": f"{random.choice(states)}, {random.choice(countries)}", 
 "startDate": start_date.strftime("%Y-%m-%d"), 
 "endDate": end_date.strftime("%Y-%m-%d"), 
-"price": round(random.uniform(10.0,1000.0),2)
+"price": round(random.uniform(0,1000.0),2)
 }
 
 

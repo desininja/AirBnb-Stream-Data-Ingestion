@@ -55,8 +55,4 @@ The pipeline consists of three key Lambda functions:
 
 Contributions are welcome! Please submit a pull request or open an issue to suggest improvements or report bugs.
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
 --- 
